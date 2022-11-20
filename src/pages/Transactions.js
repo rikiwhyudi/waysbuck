@@ -1,5 +1,5 @@
 import React from 'react'
-import Income from '../components/Income'
+import Income from '../components/transactions/Income'
 import Navbars from '../components/Navbar'
 
 function Transactions() {

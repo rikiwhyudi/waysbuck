@@ -1,5 +1,5 @@
 import React from 'react'
-import { getToping } from '../utils/Data'
+import { getToping } from '../../utils/Data'
 import Topping from './Topping'
 
 function ListToping() {

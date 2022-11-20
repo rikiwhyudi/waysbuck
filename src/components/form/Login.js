@@ -41,15 +41,15 @@ function Login({show, showLogin, showRegister}) {
     }
   };
 
-  function handleOnChange(event) {
+  function handleOnChange(e) {
     setUserLogin({
       ...userLogin,
-      [event.target.name]: event.target.value,
+      [e.target.name]: e.target.value,
     });
   }
 
-  function handleOnSubmit(event) {
-    event.preventDefault();
+  function handleOnSubmit(e) {
+    e.preventDefault();
     getUser();
     let loggedIn = dataUser.filter(
       (element) => element.email === userLogin.email
@@ -64,7 +64,6 @@ function Login({show, showLogin, showRegister}) {
 
     let parsed = JSON.stringify(loggedIn);
     localStorage.setItem("LOGIN_STATUS", parsed);
-    // alert("successfully login..")
     Swalrt.fire({
       position: 'center',
       icon: 'success',
@@ -92,7 +91,7 @@ function Login({show, showLogin, showRegister}) {
           <form className="my-3" onSubmit={handleOnSubmit}>
           <Form.Group className="mb-3">
             <Form.Control
-            type="text"
+            type="email"
             onChange={handleOnChange}
             name="email"
             placeholder="Riki Wahyudi"

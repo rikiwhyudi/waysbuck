@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { getData } from '../utils/Data';
+import { getData } from '../../utils/Data';
 import Details from './Details';
 
 

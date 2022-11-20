@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import  Navbar from 'react-bootstrap/Navbar';
 import { Button , Dropdown } from 'react-bootstrap';
-import Login from './Login.js';
-import Register from './Register';
+import Login from './form/Login.js';
+import Register from './form/Register';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import withReactContent from "sweetalert2-react-content"
@@ -16,11 +16,9 @@ function Navbars() {
   const navigate = useNavigate()
   const Swalrt = withReactContent(Swal)
 
-  // localStorage.setItem("LOGIN_STATUS", JSON.stringify([]))
   const localData = localStorage.getItem("LOGIN_STATUS");
   const data = JSON.parse(localData);
   let getLogin = [...data];
-  // console.log(getLogin.length)
 
   const Logout = () => {
     getLogin.pop();
@@ -45,8 +43,6 @@ function Navbars() {
             <img
               onClick={() => { navigate("/") }}
               src="/logo.svg"
-              width="55px"
-              height="70px"
               style={{ cursor: "pointer" }}
               className="d-inline-block align-top"
               alt="Waysbuck"
@@ -71,16 +67,18 @@ function Navbars() {
         <>
           {getLogin[0].role === "admin" ? (
           <Dropdown.Menu>
-            <Dropdown.Item onClick={() => { navigate("/profile") }} className="fw-bold"> <img src="/assets/img/user.svg" alt="" className="me-2 mb-2" /> Profile</Dropdown.Item>
+            <Dropdown.Item onClick={() => { navigate("/profile") }} className="fw-bold"><img src="/assets/img/user.svg" alt="" className="me-2 mb-2" />Profile</Dropdown.Item>
             <Dropdown.Item onClick={() => { navigate("/add-products") }} className="fw-bold"> <img src="/assets/img/addproduct.svg" alt="" className="me-2 mb-2" />Add Products</Dropdown.Item>
             <Dropdown.Item onClick={() => { navigate("/add-topping") }} className="fw-bold"> <img src="/assets/img/addtoping.svg" alt="" className="me-2 mb-2" />Add Toping</Dropdown.Item>
             <Dropdown.Item onClick={() => { navigate("/transactions") }} className="fw-bold"> <img src="/assets/img/user.svg" alt="" className="me-2 mb-2" />Transactions</Dropdown.Item>
+            <div className="my-1" style={{borderBottom: "2px solid grey"}} />
             <Dropdown.Item onClick={() => { Logout(); navigate("/")}} className="fw-bold"> <img src="/assets/img/logout.svg" alt="" className="me-2 mb-1 ms-1"/>Logout</Dropdown.Item>
           </Dropdown.Menu>
           ) : (
             <Dropdown.Menu>
-            <Dropdown.Item onClick={() => { navigate("/profile") }} className="fw-bold">Profile</Dropdown.Item>
-            <Dropdown.Item onClick={() => { Logout(); navigate("/")}} className="fw-bold">Logout</Dropdown.Item>
+            <Dropdown.Item onClick={() => { navigate("/profile") }} className="fw-bold"><img src="/assets/img/user.svg" alt="" className="me-2 mb-2" />Profile</Dropdown.Item>
+            <div className="my-1" style={{borderBottom: "2px solid grey"}} />
+            <Dropdown.Item onClick={() => { Logout(); navigate("/")}} className="fw-bold"><img src="/assets/img/logout.svg" alt="" className="me-2 mb-1 ms-1"/> Logout</Dropdown.Item>
           </Dropdown.Menu>
             )}
           </>

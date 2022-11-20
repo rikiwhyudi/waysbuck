@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbars from '../components/Navbar'
-import TopingAdd from '../components/TopingAdd'
+import TopingAdd from '../components/form/TopingAdd'
 
 function AddTopping() {
   return (

@@ -3,8 +3,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2'
+import withReactContent from "sweetalert2-react-content"
 
 function Register({show, showLogin, showRegister}) {
+  
+  const Swalrt = withReactContent(Swal)
   const dataUser = [];
 
   const handleClose = () => showRegister(false)
@@ -36,7 +40,13 @@ function Register({show, showLogin, showRegister}) {
       (element) => element.email === userRegister.email
     );
     if (loggedIn.length !== 0) {
-      return alert("email is registered");
+      return Swalrt.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Email already taken.!',
+        showConfirmButton: true,
+        timer: 5000
+      })
     } else {
       createUser();
       changeModal();
@@ -59,6 +69,13 @@ function Register({show, showLogin, showRegister}) {
   };
 
   const createUser = () => {
+    Swalrt.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Successfully Register..',
+      showConfirmButton: true,
+      timer: 5000
+    })
     userRegister.id = dataUser.length;
     dataUser.push(userRegister);
     const parsed = JSON.stringify(dataUser);

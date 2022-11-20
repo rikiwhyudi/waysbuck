@@ -68,7 +68,7 @@ function Cart() {
            Swalrt.fire({
             position: 'center',
             icon: 'success',
-            title: `Thank you for ordering in us,. \n Please wait to verify your order..`,
+            title: `Thank you for ordering in us. \n Please wait to verify your order..`,
             showConfirmButton: true,
             timer: 5000
           })
